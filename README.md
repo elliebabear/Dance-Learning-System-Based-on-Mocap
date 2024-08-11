@@ -1,3 +1,3 @@
-Please use "GIT LFS" to pull files
-Please use "GIT LFS" to pull files
-Please use "GIT LFS" to pull files
+Please use "GIT LFS" to pull files \n
+Please use "GIT LFS" to pull files \n
+Please use "GIT LFS" to pull files \n
