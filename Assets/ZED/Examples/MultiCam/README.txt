@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:bd098830d5f061eba476b6528ca1c6dcb3f0b4db82455023acedca8592d2095f
-size 434
+Summary: 
+
+Uses Multi-cam capabilities since plugin 2.8.
+
+* Two ZED_Rig (mono) are used in the scene (each one with its CAMERA_ID). 
+* Images are then shown on the canvas.
+ 
+
+Notes : 
+- There is a current limitation of 4 cameras on the plugin (CAMERA_ID up to 4).
+- Make sure that if you have multiple ZEDManager (or ZED Prefabs) in the scene, they don't share the same CAMERA_ID, otherwise undefined behavior may occur.
+

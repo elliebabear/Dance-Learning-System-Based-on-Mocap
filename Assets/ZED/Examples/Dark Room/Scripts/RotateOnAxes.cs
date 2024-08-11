@@ -1,3 +1,39 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d2589fd5ad0116c0c9dd674d3bc21bba551bd14be23489f4661577a20f356e2e
-size 1666
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+/// <summary>
+/// Rotates the object along its axes consistently. 
+/// Because its using local axes, it affects the angle of other axes going forward, resulting in wild
+/// but possibly desired behavior if multiple axes are rotating at once.
+/// Used in the ZED Dark Room example scene to rotate lights. 
+/// </summary>
+public class RotateOnAxes : MonoBehaviour
+{
+    /// <summary>
+    /// How far it spins on the X axis (pitch) per frame. 
+    /// </summary>
+    [Tooltip("How far it spins on the X axis (pitch) per frame. ")]
+    public float xRevolutionsPerSecond = 0.5f;
+
+    /// <summary>
+    /// How far it spins on the Y axis (yaw) per frame. 
+    /// </summary>
+    [Tooltip("How far it spins on the Y axis (yaw) per frame. ")]
+    public float yRevolutionsPerSecond = 0.25f;
+
+    /// <summary>
+    /// How far it spins on the Z axis (roll) per frame. 
+    /// </summary>
+    [Tooltip("How far it spins on the Z axis (roll) per frame. ")]
+    public float zRevolutionsPerSecond = 0;
+	
+	// Update is called once per frame
+	void Update ()
+    {
+        //Rotate on the axes. Note that the order this occurs is important as each rotation changes transform.localRotation. 
+        transform.Rotate(transform.localRotation * Vector3.right, xRevolutionsPerSecond * 360 * Time.deltaTime); //Pitch
+        transform.Rotate(transform.localRotation * Vector3.up, yRevolutionsPerSecond * 360 * Time.deltaTime); //Yaw
+        transform.Rotate(transform.localRotation * Vector3.forward, zRevolutionsPerSecond * 360 * Time.deltaTime); //Roll
+    }
+}

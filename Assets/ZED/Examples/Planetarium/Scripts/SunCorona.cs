@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8f2fe3f86e04529e10c6bf60917392450c17690d29939149d8807cb99f46a4cf
-size 458
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SunCorona : MonoBehaviour
+{
+
+    Material mat;
+    Vector2 offset;
+    public Vector2 speed = new Vector2(1, 1); 
+	void Start () {
+        mat = GetComponent<Renderer>().sharedMaterial;
+	}
+	
+	// Update is called once per frame
+	void Update () {
+        offset += speed * Time.deltaTime;
+        mat.SetTextureOffset("_MainTex", offset);
+	}
+}

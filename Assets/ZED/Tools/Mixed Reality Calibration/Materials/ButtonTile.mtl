@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8db6d0da56a24e144c163c9c76fe168780d511e8181445ef0310dab04cd1dd5f
-size 446
+# Blender MTL File: 'ButtonTile.blend'
+# Material Count: 2
+
+newmtl SideBottomMat
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.279212 0.237409 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl TopMat
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.201381 0.403761 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2

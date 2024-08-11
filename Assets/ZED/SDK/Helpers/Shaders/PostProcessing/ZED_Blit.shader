@@ -1,3 +1,55 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e7542b599511f3b485a7c1b261eb87973e4fb5b5a301da8fafe6075bbcbdace5
-size 981
+﻿//======= Copyright (c) Stereolabs Corporation, All rights reserved. ===============
+//Custom blit, to blit canal alpha to all canals
+Shader "ZED/ZED Blit"
+{
+	Properties
+	{
+		_MainTex ("Texture", 2D) = "white" {}
+	}
+	SubShader
+	{
+		Tags { "RenderType"="Opaque" }
+
+		//Blit Alpha to R
+		Pass
+		{
+		ZTest Always Cull Off ZWrite Off
+			CGPROGRAM
+			#pragma vertex vert
+			#pragma fragment frag
+			
+			
+			#include "UnityCG.cginc"
+
+			struct appdata
+			{
+				float4 vertex : POSITION;
+				float2 uv : TEXCOORD0;
+			};
+
+			struct v2f
+			{
+				float2 uv : TEXCOORD0;
+				float4 vertex : SV_POSITION;
+			};
+
+			sampler2D _MainTex;
+			float4 _MainTex_ST;
+			
+			v2f vert (appdata v)
+			{
+				v2f o;
+				o.vertex = UnityObjectToClipPos(v.vertex);
+				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+				return o;
+			}
+			
+			fixed4 frag (v2f i) : SV_Target
+			{
+				fixed col = tex2D(_MainTex, i.uv).a;
+				return col;
+			}
+			ENDCG
+		}
+	}
+}

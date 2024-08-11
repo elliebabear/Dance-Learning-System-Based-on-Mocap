@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4e97621c9b2beefde98ceb57d156d1f98422aaa536d04186235b8b3110fb57a6
-size 693
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+/// <summary>
+/// Enables the attached GameObject if the OpenCV for Unity package isn't detected. 
+/// Used in the OpenCV ArUco example scene to indicate the package is missing via a Text object on the canvas. 
+/// </summary>
+public class EnableIfOpenCVNotDetected : MonoBehaviour
+{
+    public GameObject objectToEnable;
+    
+	void Awake ()
+    {
+#if !ZED_OPENCV_FOR_UNITY
+     if(!objectToEnable) 
+        {
+            objectToEnable = GetComponentInChildren<Text>().gameObject;
+        }
+
+        objectToEnable.gameObject.SetActive(true);
+#endif
+    }
+	
+
+}

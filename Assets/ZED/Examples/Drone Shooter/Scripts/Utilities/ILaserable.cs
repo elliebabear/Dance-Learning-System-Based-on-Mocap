@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8598a3a0c1dd3eb02ac186b1730f13244988a211e79f11be748fcc5aa7452c9e
-size 465
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+/// <summary>
+/// Interface used by LaserShot_Player to deal damage. Implement in an object you want to be able to damage with the player's laser gun. 
+/// </summary>
+public interface ILaserable
+{
+    /// <summary>
+    /// Deal damage in some way. 
+    /// </summary>
+    /// <param name="damage">How much damage to deal.</param>
+    void TakeDamage(int damage);
+
+}

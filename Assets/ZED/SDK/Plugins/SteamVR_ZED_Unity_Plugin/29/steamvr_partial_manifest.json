@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:855b99a63b2166ec3f3903b97c8ad807de96e2334dec123c24242fe33341fed4
-size 128
+{
+  "name": "ZED_Unity_Plugin",
+  "version": 29,
+  "overwriteOld": false,
+  "removeUnused": false,
+  "imported": false
+}

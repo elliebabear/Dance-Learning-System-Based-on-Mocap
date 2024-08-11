@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ca784384fde544065d41c64478c71ba52eab9ef427a904a780e397e2915b0e9b
-size 1041
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnableWhenReady : MonoBehaviour {
+
+
+	// Use this for initialization
+	void Start () {
+		if (ZEDManager.GetInstance (sl.ZED_CAMERA_ID.CAMERA_ID_01) != null) 
+			ZEDManager.GetInstance (sl.ZED_CAMERA_ID.CAMERA_ID_01).OnZEDReady += zedIsReady;
+
+		if (ZEDManager.GetInstance (sl.ZED_CAMERA_ID.CAMERA_ID_02) != null) 
+			ZEDManager.GetInstance (sl.ZED_CAMERA_ID.CAMERA_ID_02).OnZEDReady += zedIsReady;
+
+        if (ZEDManager.GetInstance(sl.ZED_CAMERA_ID.CAMERA_ID_03) != null)
+            ZEDManager.GetInstance(sl.ZED_CAMERA_ID.CAMERA_ID_03).OnZEDReady += zedIsReady;
+
+        if (ZEDManager.GetInstance(sl.ZED_CAMERA_ID.CAMERA_ID_04) != null)
+            ZEDManager.GetInstance(sl.ZED_CAMERA_ID.CAMERA_ID_04).OnZEDReady += zedIsReady;
+
+    }
+	
+	// Update is called once per frame
+	void zedIsReady () {
+ 
+		foreach (var tr in gameObject.GetComponentsInChildren<Transform>(true))
+			tr.gameObject.SetActive (true);
+	}
+}

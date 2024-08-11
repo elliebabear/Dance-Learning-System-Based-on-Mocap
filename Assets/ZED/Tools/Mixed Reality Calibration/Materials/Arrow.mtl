@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:55356e78bae3dce40c68a2fcb588f833a4f120b84a156ee40e7c00ceb4def6f9
-size 154
+# Blender MTL File: 'Arrow.blend'
+# Material Count: 1
+
+newmtl None
+Ns 0
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2

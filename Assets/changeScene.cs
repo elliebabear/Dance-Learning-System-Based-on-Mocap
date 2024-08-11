@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:286905ef492e439afc4940177d477e5ff6c378616d63f4a3865e06ebec834968
-size 432
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class changeScene : MonoBehaviour
+{
+    // Start is called before the first frame update
+    public void startLearning()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    // Update is called once per frame
+    public void startEvaluation()
+    {
+        SceneManager.LoadScene(2);
+    }
+}

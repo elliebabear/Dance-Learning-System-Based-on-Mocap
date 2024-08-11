@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:781be8c13b08ac33a3208f2293334a9353ae523f5e117f4dc1f3f0879aee3514
-size 513
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class displayScore : MonoBehaviour
+{
+    public Text scoreText;
+    //public recordScore recordscore;
+    // Start is called before the first frame update
+    void Start()
+    {
+        string finalscore = PlayerPrefs.GetString("finalScore");
+        scoreText.text = finalscore + "/100";
+    }
+
+    // Update is called once per frame
+    //void Update()
+    //{
+        
+    //}
+}

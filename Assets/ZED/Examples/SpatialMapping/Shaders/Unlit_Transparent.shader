@@ -1,3 +1,60 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ed2488306c36ccd5482819a3da8840c639cb7b63a5066f58b5354e3103ab6107
-size 1157
+﻿//======= Copyright (c) Stereolabs Corporation, All rights reserved. ===============
+
+//Displays the navMesh above the current depth
+Shader "Custom/Unlit Transparent"
+{
+	Properties
+	{
+		_Color("color", Color) = (1.0, 1.0, 1.0, 1.0)
+		_Offset("Offset", Range(-200,-20)) = -20
+	}
+		SubShader
+	{
+
+		Tags { "RenderType"="Transparent" "Queue"="Transparent" "IgnoreProjector" = "True" }
+		Blend SrcAlpha OneMinusSrcAlpha
+		ZWrite Off
+		Offset [_Offset],-2
+		Pass
+		{
+		
+
+			CGPROGRAM
+			#pragma vertex vert
+			#pragma fragment frag
+			
+			#include "UnityCG.cginc"
+
+			struct appdata
+			{
+				float4 vertex : POSITION;
+				float2 uv : TEXCOORD0;
+			};
+
+			struct v2f
+			{
+				float2 uv : TEXCOORD0;
+				UNITY_FOG_COORDS(1)
+				float4 vertex : SV_POSITION;
+			};
+
+			sampler2D _MainTex;
+			float4 _MainTex_ST;
+			float4 _Color;
+			v2f vert (appdata v)
+			{
+				v2f o;
+				o.vertex = UnityObjectToClipPos(v.vertex);
+				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+				UNITY_TRANSFER_FOG(o,o.vertex);
+				return o;
+			}
+			
+			fixed4 frag (v2f i) : SV_Target
+			{				
+				return _Color;
+			}
+			ENDCG
+		}
+	}
+}

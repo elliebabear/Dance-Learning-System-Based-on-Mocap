@@ -1,3 +1,26 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:112ab96eaf1faacd65367df4e7ea078c5044f030ffc6ce2354aeb170b6b29db7
-size 650
+//======= Copyright (c) Stereolabs Corporation, All rights reserved. ===============
+
+Shader "Point Cloud/Disk"
+{
+    Properties
+    {
+        _Tint("Tint", Color) = (0.5, 0.5, 0.5, 1)
+        _PointSize("Point Size", Float) = 0.05
+    }
+    SubShader
+    {
+        Tags { "RenderType"="Opaque" }
+        Cull Off
+        Pass
+        {
+            Tags { "LightMode"="ForwardBase" }
+            CGPROGRAM
+            #pragma vertex Vertex
+            #pragma geometry Geometry
+            #pragma fragment Fragment
+            #pragma multi_compile_fog
+            #include "Disk.cginc"
+            ENDCG
+        }
+    }
+}
